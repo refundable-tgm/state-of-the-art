@@ -1,0 +1,85 @@
+\documentclass[minted, notitle]{protocol}
+% Packages
+\usepackage{verbatim}
+\usepackage{pgfmath}
+\usepackage{sectsty}
+
+% Required
+\title{Refundable}
+\author{Dehner Linus, Foster Ryan, Beier Michael}
+% Optional
+\mysubtitle{Machbarkeitsanalyse}
+% Version
+% \myteacher{}
+\myversion{0.1}
+% \mybegin{31. Januar 2018}
+% \myfinish{17. April 2018}
+% \setcode{frame=single} 			% Add a frame to codes (single, lines)
+% \setcode{bgcolor=MyLightGray}		% Add a background to codes (minted only)
+% \usemintedstyle{rainbow_dash} 	% autumn, rainbow_dash, tango (default), trac
+\tocfalse
+\definecolor{celadon}{rgb}{0.67, 0.88, 0.69}
+\definecolor{lightgrey}{rgb}{0.88 0.88 0.88}
+\definecolor{rlightgreen}{RGB}{221, 246, 202}
+%\rowcolors{2}{celadon}{green!70!yellow!40}
+\rowcolors{2}{lightgrey}{white}
+\newcommand{\draft}{\cellcolor{Peach} Draft}
+\newcommand{\abgabe}{\cellcolor{LimeGreen}Approved } 
+\newcommand{\version}{1.0}
+
+% Kacpers total wichtige Design-Prinzipien
+\usepackage[sfdefault]{roboto} % The font, that beats them all...
+\usepackage{hyperref} % To make Hyperlinks inside the document
+% Farbensetzen für Sections
+% -- DEPRECATED -- I miss you green Hulk :/
+%\sectionfont{\color{LimeGreen}}  % Green Hulk > Red Hulk
+%\subsectionfont{\color{OliveGreen}}
+\sectionfont{\color{darkgray}}
+\subsectionfont{\color{gray}}
+\newlist{coloritemize}{itemize}{1}
+\setlist[coloritemize]{label=\textcolor{OliveGreen}{\textbullet}}
+\begin{document}
+\begin{titlepage} % Fancy title page
+	\raggedleft % Right align the title page
+	
+	\begingroup \color{gray}{\rule{3pt}{\textheight}} \endgroup % Vertical line
+	%\begingroup \color{OliveGreen}{\rule{3pt}{\textheight}} \endgroup % Vertical line
+	\hspace{0.05\textwidth} % Whitespace between the vertical line and title page text
+	\parbox[b]{0.75\textwidth}{ % Paragraph box for holding the title page text, adjust the width to move the title page left or right on the page
+		{{\fontsize{27}{48} \selectfont  MACHBARKEITSSTUDIE}}  \\ \\
+		\includegraphics[width=200pt]{images/refundable_logo_klein.png} \\ \\ \\ \\
+		%{\includegraphics[width=220pt]{images/Logo_1.png}} \\[2\baselineskip]
+		{{\fontsize{50}{40} \bfseries \color{Cyan} REFUNDABLE}} \\[0.5\baselineskip] %\LaTeX ~Templates}\\[2\baselineskip] % Title
+		{{\fontsize{20}{48} \selectfont effiziente Reise- und Exkursions-\\verwaltung für Schulen}} \\ [0.5\baselineskip] % Subtitle or further description
+		%{\Large Lernbüroverwaltungstool}\\ [2\baselineskip] % Subtitle or further description
+		{\vspace{-0.5cm}\large \begin{flushleft}Dehner Linus, Foster Ryan, Beier Michael\end{flushleft}} % Author name, lower case for consistent small caps
+		%\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+		{\vspace{0.3cm}\includegraphics[width=220pt]{images/tgm_full.png}}
+		%{\noindent The Publisher~~\plogo}\\[\baselineskip] % Publisher and logo
+	}
+\end{titlepage}
+
+\begin{center}
+\rowcolors{2}{white}{white}
+
+\begin{tabular}{| c | p{1.8cm} | p{1.8cm} | c | c | p{3.4cm} |}
+\hline \rowcolor{gray} \textbf{\color{white}Version} & \textbf{\color{white}Autor} & \textbf{\color{white}QS} & \textbf{\color{white}Datum} & \textbf{\color{white}Status} & \textbf{\color{white}Kommentare} \\ 
+ \hline \hline
+0.1 & ldehner & mbeier & 2020-09-24 & Draft & \\ \hline 
+
+\end{tabular}
+\end{center}
+
+\clearpage
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+} 
+\clearpage
+\section{plattformunabhängige und responsive Webapplikation}
+\include{chapters/_ldehner}
+\section{Schnittstellen im Frontend}
+\include{chapters/_rfoster}
+\section{Backend mit Schnittstellen zu Frontend und Diensten}
+\include{chapters/_mbeier}
+\end{document}
