@@ -164,7 +164,7 @@
 
 \makeatletter
 \fancyhead[L]{\small \thetitle}
-\fancyhead[C]{\small Machbarkeitanalysen}
+\fancyhead[C]{\small Machbarkeitanalyse}
 \fancyhead[R]{\small v\@myversion}
 \fancyfoot[L]{\small \@date}
 \fancyfoot[C]{\small Diplomarbeit}
