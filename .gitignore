@@ -28,7 +28,6 @@
 .pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
-library.bib
 *.bbl
 *.bcf
 *.blg
