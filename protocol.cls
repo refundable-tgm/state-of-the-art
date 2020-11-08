@@ -175,9 +175,9 @@
 % Add glossary / bibliography entries if they exist
 \IfFileExists{glossaries.tex}{\input{glossaries}\makeglossaries}{}
 % CUSTOM: Adding different source files from all teammembers
-\IfFileExists{sources/rfoster_diploma.bib}{\addbibresource{bibliography}}{}
-\IfFileExists{sources/mbeier_diploma.bib}{\addbibresource{bibliography}}{}
-\IfFileExists{sources/ldehner_diploma.bib}{\addbibresource{bibliography}}{}
+\IfFileExists{sources/rfoster_diploma.bib}{\addbibresource{sources/rfoster_diplomabib}}{}
+\IfFileExists{sources/mbeier_diploma.bib}{\addbibresource{sources/mbeier_diploma.bib}}{}
+\IfFileExists{sources/ldehner_diploma.bib}{\addbibresource{sources/ldehner_diploma.bib}}{}
 
 % :: Hacks :: %
 \def\arraystretch{1.5}      				% Increase table cell spacing
