@@ -295,9 +295,9 @@
     \else 	\ifen\printbibliography[heading=bibintoc]
             \else\printbibliography[heading=bibintoc, title=Literaturverzeichnis]\fi\fi
     % List lists if not empty
-    \iftotalfigures\listoffigures\fi
-    \iftotaltables\listoftables\fi
-    \iftotallistings\listoflistings\fi
+    \iftotalfigures\addcontentsline{toc}{section}{Abbildungsverzeichnis}\listoffigures\fi
+    \iftotaltables\addcontentsline{toc}{section}{Tabellenverzeichnis}\listoftables\fi
+    \iftotallistings\addcontentsline{toc}{section}{Aufzählungsverzeichnis}\listoflistings\fi
 }
 
 
