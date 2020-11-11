@@ -230,3 +230,7 @@ TSWLatexianTemp*
 
 __sandbox*
 .fuse*
+
+# Outputted PDF for git reasons
+
+main.pdf
