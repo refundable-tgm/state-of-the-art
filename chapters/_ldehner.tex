@@ -51,9 +51,66 @@
 		\cite{auszeichnungssprachen}
 		\cite{html5-css3-handbuch}
 		\cite{html5-css3-def}
-		\subsubsection{Vanilla CSS}
-		\Gls{vanilla} \Gls{css}
+		\subsubsection{CSS}
+		Cascading Stylesheets oder kurz CSS ist wie der Name schon sagt für den \textit{Style}, also für das Aussehen der Website verantwortlich. Da HTML Anfangs nur im Printbereich verbreitet war, war es nicht notwendig die Seiten zu gestalten. Das Internet bekam aber einen immer stärker werdenden Einfluss und daher auch eine höhere Bekanntheit deswegen wurde HTML mit der Formatierungssprache CSS ergänzt.\\
+		Mittels CSS ist unter anderem folgende Dinge möglich:
+		\begin{itemize}
+			\item Hintergrund ändern
+			\item Schrift ändern
+			\item Die Website automatisch an die Bildschirmgröße anpassen
+			\item Den Formfaktor von Elementen verändern
+			\subitem Größe
+			\subitem Rand
+			\subitem Farbe
+			\subitem Form
+			\subitem Schatten
+			\subitem Hover-Effekt
+		\end{itemize}
+		Man kann CSS auf verschiedene Arten in HTML benützen. Als Beispiel werden wir eine Überschrift in die Mitte der Website setzen, die Schriftgröße auf 40pt stellen und die Schriftart auf sans-serif ändern.\\
+		Entweder man fügt einem Element ein Style-Attribut hinzu und ändert direkt im Element das Aussehen. Hierbei ist darauf zu achten, dass nur das Element in dem man diese Änderungen vornimmt verändert werden:
+		\begin{code}{html}
+			<h1 style="text-align: center; font-size: 40pt; font-family: sans-serif;">Ich bin eine tolle Überschrift</h1>
+		\end{code}
+		Man kann auch im head einen style-Bereich eröffnen und dort das Aussehen verändern. Dabei ist darauf zu achten, dass man den Style von allen Elementen mit dem Tag, den man ausgewählt hat verändert. Um dies zu verhindern kann man Elementen auch eine ID (für einzelne Elemente verwendbar) oder eine CLASS (für mehrere Elemente verwendbar) hinzufügen und diese im CSS auswählen und verändern:
+		\begin{code}{html}
+			<html lang="de">
+				<head>
+					<style>
+					//Für das ganze Element
+					h1 {
+						text-align: center; 
+						font-size: 40pt; 
+						font-family: sans-serif;
+					}
+				
+					//Für IDs
+					#ueberschrift1 {
+						text-align: center; 
+						font-size: 40pt; 
+						font-family: sans-serif;
+					}
+					
+					//Für Klassen
+					.ueberschriftenGruppe {
+						text-align: center; 
+						font-size: 40pt; 
+						font-family: sans-serif;
+					}
+					</style>
+				</head>
+			</html>
+		\end{code}
+		Ebenfalls kann man ein CSS-File, welches den Inhalt des obigen style-Tags hat im head als externes File einbinden:
+		\begin{code}{html}
+			<head>
+				<link rel="stylesheet" href="file.css" type="text/css">
+			</head>
+		\end{code}
+		Wie man erkennen kann ist dem ganzen keine Ende gesetzt und mit viel Aufwand kann man so ziemlich alles verändern. Um den Aufwand jedoch gering zu halten sind SASS und CSS Frameworks da, zu welchen wir später kommen.
+		\cite{html5-css3-def}
+		\cite{html5-css3-handbuch}
 		\subsubsection{JS}
+		JavaScript wird nur sehr kurz besprochen, da es für diesen Teil keine große Rolle spielt. Es wird verwendet um den Elementen Funktionen zu geben, also zum Beispiel, dass wenn man auf einen Button drückt ein Fenster aufpoppt, ein neues Element hinzugefügt wird oder ein Element im Nachhinein verändert wird. Da JavaScript eine Skriptsprache ist kann man auch eigene Funktionen schreiben und Variablen verwenden. Für das Designen brauch man JS fast nur, wenn man nur mit CSS oder SASS arbeitet, wenn man ein Framework verwendet haben diese meist ein JavaScript Framework inkludiert und man muss fast kein JavaScript mehr verwenden.
 	\subsection{SASS}
 	\subsection{CSS Frameworks}
 	\Gls{css} \Gls{framework}s
