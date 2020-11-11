@@ -1,7 +1,60 @@
 \section{Projektleitung \& Frontend - responsives Webdesign}
 	\subsection{Überblick}
-	In diesem Teil werden die Anforderungen des \Gls{frontend}s geschildert. Da es mehrere Möglichkeiten gibt das \Gls{frontend} zu realisieren werden hier zwei wesentliche Methoden verglichen. Zum Einen die Variante \Gls{html}, \Gls{css} und \Gls{js} zu verwenden, zum Anderen eine \Gls{webapplikation} basierend auf \Gls{java} mit Hilfe eines \Gls{full stack framework}s. Ebenfalls werden hier verschiedene \Gls{css} \Gls{framework}s verglichen. Anschließend werden die zwei verschiedenen Methoden verglichen und die Beste ausgewählt. Zu guter Letzt wird das Design für die Zielgruppe analysiert, da Refundable explizit für Lehrer maßgeschneidert wird.
-	\subsection{Projektmanagement}
+	In diesem Kapitel werden die Anforderungen des Designs des \Gls{frontend}s geschildert. Da es mehrere Möglichkeiten gibt das Frontend zu realisieren werden hier drei wesentliche Methoden verglichen. Die Variante \Gls{html}, \Gls{css} und \Gls{js} zu verwenden. Die zweite Methode die zum Vergleich hergezogen wird ist statt \Gls{vanilla} CSS \Gls{sass} zu verwenden. Die dritte und auch letzte Methode in diesem Vergleich ist, dass die Arbeit durch die Verwendung eines CSS \Gls{framework}s vereinfacht wird. Anschließend werden die drei verschiedenen Methoden verglichen und die, die am Besten für unser Projekt Refundable passt ausgewählt. Zu guter Letzt wird das Design für die Zielgruppe analysiert, da Refundable explizit für Lehrer codiert wird und diese sich möglichst gut und schnell auf der Website zurecht finden sollen.
+	
+	\subsection{HTML, CSS, JS}
+	Der eigentliche Standard HTML5 wird in der Praxis meist als Überbegriff für HTML, CSS und JS verwendet. In diesem Unterkapiteln beschäftigen wir uns genau damit.\cite{html5-css3-handbuch} In den folgenden Kapiteln wird erklärt wozu HTML, CSS und JS da sind und welche Funktionalitäten sie bieten.
+	
+		\subsubsection{HTML}
+		HTML ist eine \Gls{auszeichnungssprache} steht für \textit{Hypertext Markup Language} und wurde 1989 von dem britischen Informatiker Tim Burners-Kee veröffentlicht.\\ 
+		\textit{\enquote{Hypertext bezeichnet die Möglichkeit, Texte mit Hilfe von Hyperlinks oder kurz Links miteinander zu verbinden.}}\cite{html5-css3-def}\\ 
+		Dies heißt, dass man mittels Hypertexts auf der Seite beliebig Herumspringen kann.
+		Auszeichnungssprachen werden im Fachjargon auch als Markup Language (ML) bezeichnet. Markup Languages werden in zwei verschiedene Gruppen aufgeteilt, zum einen Procedural Markup Languages (PML), das sind jene Auszeichnungssprachen, die für die Verarbeitung von Daten optimiert sind. Zum anderen Descriptive Markup Languages (DML), diese sind für die logische Strukturierung von Daten da.\\Bekannte Beispiele hierfür wären:
+		\begin{itemize}
+		\item PML
+		\subitem PDF
+		\subitem TeX
+		\item DML
+		\subitem HTML
+		\subitem SVG
+		\end{itemize}
+		HTML ist hauptsächlich dafür da, um Texte, Grafiken und Hyperlinks (Links) darzustellen. Die Bearbeitung von HTML-Dokumenten ist relativ einfach und unkompliziert, da es eine reine textbasierte Sprache ist und mit jedem Texteditor bearbeitet werden kann.\\
+		Allerdings ist HTML nicht mit einer Programmiersprache zu verwechseln, da nur \Gls{tag}s und keine Befehle oder Anweisungen verwendet werden. Solche Tags können wie folgt aussehen:
+		\begin{code}{html}
+			<tagname>Tag Inhalt</tagname>
+			<einzeltag attribut="123">
+		\end{code}
+		Das grundlegende Gerüst von HTML besteht aus einer Deklaration von HTML, einem \textit{html-}, \textit{head-} und \textit{body-Tag}. In den \textit{html-Tag} kommt ein \textit{title-Tag}, in diesem wird der Titel der Website angegeben und ein \textit{meta-tag}, in diesem werden Meta-Informationen angegeben. In den \textit{Body-Tag} kommen wiederum Tags, die den Inhalt der Seite beinhalten. 
+		\begin{code}{html}
+			<!DOCTYPE html>
+			<html lang="de">
+				<head>
+					<meta charset="UTF-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<title>Kurzes BSP</title>
+				</head>
+				<body>
+					<h1>Überschrift</h1>
+					<button>Drück mich!</button>
+				</body>
+			</html>
+		\end{code}
+		Wenn man die Datei nun im Browser öffnet schaut dies wie folgt aus:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\linewidth]{images/html1}
+			\caption[HTML Beispielseite]{Beispiel einer HTML Seite mit einer Überschrift und einem Button}
+			\label{fig:htmlbsp}
+		\end{figure}
+		~\\
+		Da HTML nur für die Grundstruktur einer Website gedacht ist, also zum beschreiben der Struktur und des Inhalts schaut die Seite noch nicht sonderlich ansprechend aus. Um das zu verändern ist CSS benötigt.
+		\cite{auszeichnungssprachen}
+		\cite{html5-css3-handbuch}
+		\cite{html5-css3-def}
+		\subsubsection{Vanilla CSS}
+		\Gls{vanilla} \Gls{css}
+		\subsubsection{JS}
+	\subsection{SASS}
 	\subsection{CSS Frameworks}
 	\Gls{css} \Gls{framework}s
 		\subsubsection{Bootstrap}
@@ -9,13 +62,8 @@
 		\subsubsection{ZURB Foundation}
 		\subsubsection{Tailwind CSS}
 		Tailwind \Gls{css}
-		\subsubsection{SASS}
-		\subsubsection{Vanilla CSS}
-		\Gls{vanilla} \Gls{css}
-		\subsubsection{Vergleich}
-	\subsection{Full Stack Framework}
-	\Gls{full stack framework}
-	\subsection{Vergleich HTML und CSS mit Java}
-	Vergleich \Gls{html} und \Gls{css} mit \Gls{java}
+	
+	\subsection{Vergleich}
+	
 	\subsection{Zielgruppenorientiertes Design}
 	\subsection{Fragestellungen}
