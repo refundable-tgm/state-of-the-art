@@ -10,7 +10,7 @@
 	\end{figure}
 	
 	\subsection{Docker}
-	Um die Infrastruktur des Projektes einfach aufbauen zu können, wird \Gls{docker} genutzt. Da es sich hier um eine komplex strukturierte Infrastruktur handelt wird zusätzlich das Werkzeug \Gls{dcompose} genutzt. Mit Docker Compose kann eine Infrastruktur aufgebaut die der \hyperref[fig:uebersicht]{1. Abbildung (Übersicht)} entspricht. Für diese sind folgende Container vorgesehen, die in den nächsten Kapiteln noch ins Detail beschrieben werden.
+	Um die Infrastruktur des Projektes einfach aufbauen zu können, wird \Gls{docker} genutzt. Da es sich hier um eine komplex strukturierte Infrastruktur handelt wird zusätzlich das Werkzeug \Gls{dcompose} genutzt. Mit Docker Compose kann eine Infrastruktur aufgebaut die der \hyperref[fig:uebersicht]{Abbildung - Übersicht} entspricht. Für diese sind folgende Container vorgesehen, die in den nächsten Kapiteln noch ins Detail beschrieben werden.
 		\subsubsection{Datenbank}
 		Um die Daten, die durch Refundable erhoben und generiert werden, zu speichern, benötigen wir eine \gls{db}. Auf Grund der Daten, welche sich durch unterschiedliche Datenstrukturen auszeichnen, ist der Einsatz einer \gls{relDb} nicht sinnvoll. Stattdessen empfiehlt sich die Verwendung einer \gls{nosqlDb}.
 		
@@ -38,15 +38,24 @@
 		Als Webserver um das Webinterface aufrufbar und verfügbar zu machen wird ein Apache2 Server genutzt. Dieser Container ruft automatisch das Frontend auf und kopiert es in seine Umgebung. Ebenfalls muss der Container Zugriff auf Zertifikaten bekommen, um einen sicheren Zugriff über \gls{https} gewährleisten zu können.\cite{apache}
 				
 	\subsection{Deployment}
-	%Docker Files; Docker Compose; Automatisches Deployment durch Script beschreiben
+	Das Deployment soll automatisch geschehen. Um dies einfach zu ermöglichen, werden die oben zuvor beschriebenen Docker-Container, GitHub und ein Skript, welches die Schritte ausführt, genutzt. Das Skript ist hier der Hauptbaustein, welcher den Vorgang startet und steuert. Zusätzlich zum Installationsvorgang, soll das Skript auch die weitere Steuerung der Software, also starten, stoppen, updaten, cleanen und deinstallieren.~\\
+	Das Skript liegt in einem eigenem Install-\Gls{repo}, in welchem sonst keine weiteren Dateien liegen. Dadurch kann es einfach gecloned werden und direkt installiert werden; der Rest wird automatisch erledigt.~\\
+	Der Installationsvorgang setzt sich aus folgenden Schritten zusammen:
+	\begin{enumerate}
+		\item Das Skript macht sich selbst verfügbar durch Setzung von environment variables bzw. dem Kopieren in einen Folder, der in der Path-Variable liegt.
+		\item Das Docker-, das Backend-, und das Frontend-Repository werden in Unterordner gecloned.
+		\item Docker wird - falls benötigt - automatisch installiert und konfiguriert.
+		\item Die individuellen Docker-Images werden über Docker Compose gebuilded.
+	\end{enumerate}
+	Die Start- und Stoppvorgänge müssen dann nur mit Docker Compose interagieren. Beim Updatevorgang werden die Repositories abgeglichen. Falls eine neue Version verfügbar ist, wird diese heruntergeladen. Die Container werden dann dementsprechend neugestartet. Der Cleanvorgang säubert das System von allen nicht mehr benötigten Docker Containern, Images und Networks. Zuletzt macht der Deinstallationsvorgang einfach den Installationsvorgang rückgängig.
 	\subsection{REST-Schnittstelle}
 	%Was ist eine REST-Schnittstelle
-		\subsubsection{Framework}
+		\subsubsection{Sprache und Framework}
 		%Welche Sprache und Frameworks nutze ich
 		\subsubsection{Endpoints}
 		%Welche Endpoints wird es geben
 	\subsection{Funktionalität}
-	% Was ist Funktionalität
+	Das Backend ist jedoch nicht nur eine reine REST-Schnittstelle, die Daten als Webservice zur Verfügung stellt, sondern auch ein Dienst, der gewisse Funktionalität implementiert und mit anderen Diensten über Schnittstellen kommuniziert. Die Hauptkomponenten und -funktionalität wird in den folgenden Unterkapiteln beschrieben.
 		\subsubsection{TGM-LDAP Schnittstelle}
 		% Wie interagiere ich mit LDAP
 		\subsubsection{Datenbank Schnittstelle}
