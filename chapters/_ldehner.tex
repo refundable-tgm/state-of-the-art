@@ -3,13 +3,13 @@
 	In diesem Kapitel werden die Anforderungen des Designs des \Gls{frontend}s geschildert. Da es mehrere Möglichkeiten gibt das Frontend zu realisieren werden hier drei wesentliche Methoden verglichen. Die Variante \Gls{html}, \Gls{css} und \Gls{js} zu verwenden. Die zweite Methode die zum Vergleich hergezogen wird ist statt \Gls{vanilla} CSS \Gls{sass} zu verwenden. Die dritte und auch letzte Methode in diesem Vergleich ist, dass die Arbeit durch die Verwendung eines CSS \Gls{framework}s vereinfacht wird. Anschließend werden die drei verschiedenen Methoden verglichen und die, die am Besten für unser Projekt Refundable passt ausgewählt. Zu guter Letzt wird das Design für die Zielgruppe analysiert, da Refundable explizit für Lehrer codiert wird und diese sich möglichst gut und schnell auf der Website zurecht finden sollen.
 	
 	\subsection{HTML, CSS, JS}
-	Der eigentliche Standard HTML5 wird in der Praxis meist als Überbegriff für HTML, CSS und JS verwendet. In diesem Unterkapiteln beschäftigen wir uns genau damit.\cite{html5-css3-handbuch} In den folgenden Kapiteln wird erklärt wozu HTML, CSS und JS da sind und welche Funktionalitäten sie bieten.
+	Der eigentliche Standard \textit{HTML5} wird in der Praxis meist als Überbegriff für \textit{HTML}, \textit{CSS} und \textit{JS} verwendet. In diesem Unterkapiteln beschäftigen wir uns genau damit.\cite{html5-css3-handbuch} In den folgenden Kapiteln wird erklärt wozu \textit{HTML}, \textit{CSS} und \textit{JS} da sind und welche Funktionalitäten sie bieten.
 	
 		\subsubsection{HTML}
 		HTML ist eine \Gls{auszeichnungssprache} steht für \textit{Hypertext Markup Language} und wurde 1989 von dem britischen Informatiker Tim Burners-Kee veröffentlicht.\\ 
 		\textit{\enquote{Hypertext bezeichnet die Möglichkeit, Texte mit Hilfe von Hyperlinks oder kurz Links miteinander zu verbinden.}}\cite{html5-css3-def}\\ 
 		Dies heißt, dass man mittels Hypertexts auf der Seite beliebig Herumspringen kann.
-		Auszeichnungssprachen werden im Fachjargon auch als Markup Language (ML) bezeichnet. Markup Languages werden in zwei verschiedene Gruppen aufgeteilt, zum einen Procedural Markup Languages (PML), das sind jene Auszeichnungssprachen, die für die Verarbeitung von Daten optimiert sind. Zum anderen Descriptive Markup Languages (DML), diese sind für die logische Strukturierung von Daten da.\\Bekannte Beispiele hierfür wären:
+		Auszeichnungssprachen werden im Fachjargon auch als \textit{Markup Language (ML)} bezeichnet. \textit{Markup Languages} werden in zwei verschiedene Gruppen aufgeteilt, zum einen \textit{Procedural Markup Languages (PML)}, das sind jene Auszeichnungssprachen, die für die Verarbeitung von Daten optimiert sind. Zum anderen \textit{Descriptive Markup Languages (DML)}, diese sind für die logische Strukturierung von Daten da.\\Bekannte Beispiele hierfür wären:
 		\begin{itemize}
 		\item PML
 		\subitem PDF
@@ -18,8 +18,8 @@
 		\subitem HTML
 		\subitem SVG
 		\end{itemize}
-		HTML ist hauptsächlich dafür da, um Texte, Grafiken und Hyperlinks (Links) darzustellen. Die Bearbeitung von HTML-Dokumenten ist relativ einfach und unkompliziert, da es eine reine textbasierte Sprache ist und mit jedem Texteditor bearbeitet werden kann.\\
-		Allerdings ist HTML nicht mit einer Programmiersprache zu verwechseln, da nur \Gls{tag}s und keine Befehle oder Anweisungen verwendet werden. Solche Tags können wie folgt aussehen:
+		\textit{HTML} ist hauptsächlich dafür da, um Texte, Grafiken und Hyperlinks (Links) darzustellen. Die Bearbeitung von \textit{HTML-Dokumenten} ist relativ einfach und unkompliziert, da es eine reine textbasierte Sprache ist und mit jedem Texteditor bearbeitet werden kann.\\
+		Allerdings ist \textit{HTML} nicht mit einer Programmiersprache zu verwechseln, da nur \Gls{tag}s und keine Befehle oder Anweisungen verwendet werden. Solche Tags können wie folgt aussehen:
 		\begin{code}{html}
 			<tagname>Tag Inhalt</tagname>
 			<einzeltag attribut="123">
@@ -47,12 +47,12 @@
 			\label{fig:htmlbsp}
 		\end{figure}
 		~\\
-		Da HTML nur für die Grundstruktur einer Website gedacht ist, also zum beschreiben der Struktur und des Inhalts schaut die Seite noch nicht sonderlich ansprechend aus. Um das zu verändern ist CSS benötigt.
+		Da \textit{HTML} nur für die Grundstruktur einer Website gedacht ist, also zum beschreiben der Struktur und des Inhalts schaut die Seite noch nicht sonderlich ansprechend aus. Um das zu verändern ist I benötigt.
 		\cite{auszeichnungssprachen}
 		\cite{html5-css3-handbuch}
 		\cite{html5-css3-def}
 		\subsubsection{CSS}
-		Cascading Stylesheets oder kurz CSS ist wie der Name schon sagt für den \textit{Style}, also für das Aussehen der Website verantwortlich. Da HTML Anfangs nur im Printbereich verbreitet war, war es nicht notwendig die Seiten zu gestalten. Das Internet bekam aber einen immer stärker werdenden Einfluss und daher auch eine höhere Bekanntheit deswegen wurde HTML mit der Formatierungssprache CSS ergänzt.\\
+		\textit{Cascading Stylesheets} oder kurz \textit{CSS} ist wie der Name schon sagt für den \textit{Style}, also für das Aussehen der Website verantwortlich. Da \textit{HTML} Anfangs nur im Printbereich verbreitet war, war es nicht notwendig die Seiten zu gestalten. Das Internet bekam aber einen immer stärker werdenden Einfluss und daher auch eine höhere Bekanntheit deswegen wurde \textit{HTML} mit der Formatierungssprache \textit{CSS} ergänzt.\\
 		Mittels CSS ist unter anderem folgende Dinge möglich:
 		\begin{itemize}
 			\item Hintergrund ändern
@@ -66,14 +66,13 @@
 			\subitem Schatten
 			\subitem Hover-Effekt
 		\end{itemize}
-		Man kann CSS auf verschiedene Arten in HTML benützen. Als Beispiel werden wir eine Überschrift in die Mitte der Website setzen, die Schriftgröße auf 40pt stellen und die Schriftart auf sans-serif ändern.\\
-		Entweder man fügt einem Element ein Style-Attribut hinzu und ändert direkt im Element das Aussehen. Hierbei ist darauf zu achten, dass nur das Element in dem man diese Änderungen vornimmt verändert werden:
+		Man kann \textit{CSS} auf verschiedene Arten in \textit{HTML} benützen. Als Beispiel werden wir eine Überschrift in die Mitte der Website setzen, die Schriftgröße auf \textit{40pt} stellen und die Schriftart auf \textit{sans-serif} ändern.\\
+		Entweder man fügt einem Element ein \textit{Style-Attribut} hinzu und ändert direkt im Element das Aussehen. Hierbei ist darauf zu achten, dass nur das Element in dem man diese Änderungen vornimmt verändert werden:
 		\begin{code}{html}
 			<h1 style="text-align: center; font-size: 40pt; font-family: sans-serif;">Ich bin eine tolle Überschrift</h1>
 		\end{code}
-		Man kann auch im head einen style-Bereich eröffnen und dort das Aussehen verändern. Dabei ist darauf zu achten, dass man den Style von allen Elementen mit dem Tag, den man ausgewählt hat verändert. Um dies zu verhindern kann man Elementen auch eine ID (für einzelne Elemente verwendbar) oder eine CLASS (für mehrere Elemente verwendbar) hinzufügen und diese im CSS auswählen und verändern:
+		Man kann auch im \textit{head} einen \textit{style-Bereich} eröffnen und dort das Aussehen verändern. Dabei ist darauf zu achten, dass man den Style von allen Elementen mit dem Tag, den man ausgewählt hat verändert. Um dies zu verhindern kann man Elementen auch eine \textit{ID} (für einzelne Elemente verwendbar) oder eine \textit{CLASS} (für mehrere Elemente verwendbar) hinzufügen und diese im CSS auswählen und verändern:
 		\begin{code}{html}
-			<html lang="de">
 				<head>
 					<style>
 					//Für das ganze Element
@@ -98,21 +97,43 @@
 					}
 					</style>
 				</head>
-			</html>
 		\end{code}
-		Ebenfalls kann man ein CSS-File, welches den Inhalt des obigen style-Tags hat im head als externes File einbinden:
+		Ebenfalls kann man ein \textit{CSS-File}, welches den Inhalt des obigen \textit{style-Tags} hat im \textit{head} als externes File einbinden:
 		\begin{code}{html}
 			<head>
 				<link rel="stylesheet" href="file.css" type="text/css">
 			</head>
 		\end{code}
-		Wie man erkennen kann ist dem ganzen keine Ende gesetzt und mit viel Aufwand kann man so ziemlich alles verändern. Um den Aufwand jedoch gering zu halten sind SASS und CSS Frameworks da, zu welchen wir später kommen.
+		Wie man erkennen kann ist dem ganzen keine Ende gesetzt und mit viel Aufwand kann man so ziemlich alles verändern. Um den Aufwand jedoch gering zu halten sind \textit{SASS} und \textit{CSS-Frameworks} da, zu welchen wir später kommen.
 		\cite{html5-css3-def}
 		\cite{html5-css3-handbuch}
 		\subsubsection{JS}
-		JavaScript wird nur sehr kurz besprochen, da es für diesen Teil keine große Rolle spielt. Es wird verwendet um den Elementen Funktionen zu geben, also zum Beispiel, dass wenn man auf einen Button drückt ein Fenster aufpoppt, ein neues Element hinzugefügt wird oder ein Element im Nachhinein verändert wird. Da JavaScript eine Skriptsprache ist kann man auch eigene Funktionen schreiben und Variablen verwenden. Für das Designen brauch man JS fast nur, wenn man nur mit CSS oder SASS arbeitet, wenn man ein Framework verwendet haben diese meist ein JavaScript Framework inkludiert und man muss fast kein JavaScript mehr verwenden.
+		\textit{JavaScript} wird nur sehr kurz besprochen, da es für diesen Teil keine große Rolle spielt. Es wird verwendet um den Elementen Funktionen zu geben, also zum Beispiel, dass wenn man auf einen Button drückt ein Fenster aufpoppt, ein neues Element hinzugefügt wird oder ein Element im Nachhinein verändert wird. Da \textit{JavaScript} eine Skriptsprache ist kann man auch eigene Funktionen schreiben und Variablen verwenden. Für das Designen brauch man JS fast nur, wenn man nur mit \textit{CSS} oder \textit{SASS} arbeitet, wenn man ein \textit{Framework} verwendet haben diese meist ein \textit{JavaScript-Framework} inkludiert und man muss fast kein \textit{JavaScript} mehr verwenden.
 	\subsection{SASS}
+	\textit{Syntactically Awesome Style Sheets} oder kurz \textit{SASS} ist eine Erweiterung von \textit{CSS}. Genauer gesagt fügt es \textit{CSS} ein paar Funktionalitäten von \textit{JS} hinzu. \textit{SASS} wird aber nicht wie \textit{CSS} direkt in das \textit{HTML-File} eingebunden und kann auch nicht direkt in ein Element geschrieben wird. Das \textit{.sass} File muss erst kompiliert werden, dann wird ein \textit{.css} File generiert, welches man im \textit{HTML-Code} einbinden kann. Man kann unter anderem Funktionen erstellen um Elemente zu verändern, dass man nicht alles händisch schreiben muss. Außerdem kann man Variablen festlegen und so zum Beispiel eine Primärfarbe festzulegen, wodurch man sich nicht immer den \textit{HEX-Code} von einer bestimmten Farbe merken muss. Ebenfalls kann man durch die Variablen die Farbe von mehreren Elementen auf Einmal ändern. Dadurch kann man zum Beispiel Light- und Darktheme in die Website einbauen.\\Beispiele für die oben genannten Funktionen wären:
+
+%	\begin{code}{sass}
+	%	$standard-width: 200px
+	%	$standard-color: #03f0fc
+	%	
+	%	.button {
+	%		background-color: $standard-color;
+	%		width: $standard-width;
+	%	}
+	%
+	%	.button big{
+	%		background-color: $standard-color;
+	%		width: multiply($standard-width, 2);
+	%	}
+	%
+	%	@function multiply($a, $b) {
+	%		@return ($a * $b);
+	%	}
+%	\end{code}
+	
+	\cite{jump-start-sass}
 	\subsection{CSS Frameworks}
+	
 	\Gls{css} \Gls{framework}s
 		\subsubsection{Bootstrap}
 		\subsubsection{Materialize}
