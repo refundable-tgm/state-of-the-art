@@ -134,6 +134,7 @@ Die Schnittstelle zwischen \Gls{backend} und \Gls{frontend} kann auch ohne ein \
 		</body>
 	</html>
 \end{code}
+Es kann auch direkt in ein \Gls{html}-File \Gls{js} in ein <script></script> geschrieben werden.
 \subsubsection{Vergleich}
 Verglichen werden diese unterschiedlichen Umsetzungsmöglichkeiten an Design, Entwicklungszeit und Performanz.\\\\
 Die Webseite, die für den Vergleich umgesetzt werden soll, wird mit den unterschiedlichen Umsetzungsmöglichkeiten umgesetzt.\\
@@ -144,9 +145,28 @@ Die Webseite, die für den Vergleich umgesetzt werden soll, wird mit den untersc
 	\label{fig:example}
 \end{figure}
 Folgende Tabelle zeigt die unterschiedlichen Werte bei der Umsetzung der Beispielwebseite:
-\\\\
-Tabelle einfügen
-Tabelle erklären
+\begin{table}
+	\centering
+	\refstepcounter{table}
+	\label{center}
+	\begin{tabular}{lcccc}
+		Kriterium        & \multicolumn{1}{l}{Maximale Punkte} & \multicolumn{1}{l}{VueJS} & \multicolumn{1}{l}{ReactJS} & \multicolumn{1}{l}{Ohne Framework}  \\
+		Design           & NaN                        &            \checkmark               &             \checkmark              &          \checkmark                           \\
+		Entwicklungszeit & 10                         &             9              &               7            &               10                      \\
+		Performanz       & 10                         &             8              &               5            &                 10                    \\
+		\gls{loc}              & 10                         &             10              &               9            &                   3                  \\
+		Gesamtpunkte     & 30                         &              26             &               21            &                23                    
+	\end{tabular}
+\end{table}
+\paragraph{Kriterien:}
+\subparagraph{Design:}
+Das Design fällt in die Wertung, da hier geschaut wird, ob die Beispiel-Website so umgesetzt werden kann, oder ob die Umsetzung in diesem Design nicht möglich ist.
+\subparagraph{Entwicklungszeit}
+Die Entwicklungszeit zwischen den zwei \Gls{framework}s ist sehr ähnlich. Jedoch ist zu beachten, dass bei dem \Gls{vue} \Gls{framework} bereits mit Komponenten gearbeitet worden ist, und dadurch die Entwicklungszeit höher ist als notwendig. Ohne \Gls{framework} hatte die kürzeste Entwicklungszeit, da nichts installiert, importiert oder aufgesetzt werden musste.
+\subparagraph{Performanz}
+Ohne \Gls{framework} ist die Performanz sehr gut, da im Hintergrund keine \Gls{framework}s geladen werden müssen. Das \Gls{js} wird direkt ausgeführt. Bei \Gls{vue} und \Gls{react} wird viel im Hintergrund geladen und dadurch braucht es länger. Obwohl Komponenten verwendet worden sind, ist \Gls{vue} performanter als \Gls{react}.
+\subparagraph{gls{loc}}
+Die beiden \Gls{framework}s haben besonders gut abgeschnitten, da für die Umsetzung mit \Gls{vue} nur wenige Codezeilen geschrieben worden sind, da dass meiste simpel mit der Funktionalität von \Gls{vue} umsetzbar ist. \Gls{react} ist auch sehr gut, da auch sehr wenige Codezeilen geschrieben werden mussten. Jedoch wurde hier allgemein gesagt mehr selbst geschrieben, wodurch es nicht die vollen Punkte verdient. Ohne \Gls{framework} hat am wenigsten Punkte erhalten, da die Umsetzung nicht nur unübersichtlich und kompliziert im Vergleich ist, sonder auch, weil man damit rechnen muss, dass bei größeren Beispielen die Umsetzung noch komplizierter und unübersichtlicher wird.
 \subsection{Aufbereitung der Daten}
 Erwähnen, warum JSON (referenz auf michi)
 \subsection{Fragestellung}
