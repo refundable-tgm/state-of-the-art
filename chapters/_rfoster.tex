@@ -2,7 +2,8 @@
 \subsection{Einleitung}
 Das \Gls{backend} muss mit dem \Gls{frontend} verbunden werden.Es gibt unterschiedliche Möglichkeiten dies zu realisieren. Beim Realisieren, muss darauf geachtet werden, dass eine Struktur vorhanden ist. Es werden 2 verschiedene \Gls{designpattern} angeschaut und verglichen. Umgesetzt wird dann ein \Gls{designpattern} mithilfe von \Gls{js}. Hier kann ein \Gls{jsframework} zum Einsatz kommen. Dazu werden hier verschiedene \Gls{jsframework}s angeschaut und verglichen. Für die Verarbeitung der Daten ist es wichtig Datenformate festzulegen. Die Aufbereitung der Elemente fürs \Gls{frontend} mit den Daten des \Gls{backend}s wird ebenfalls angeschaut.
 \newline
-Fragestellung aufstellen!
+\newline
+Daraus erschließt sich eine gewisse Fragestellung, die in den nächsten Seiten beantwortet wird. Zum Ersten, welche Unterschiede es zwischen den \Gls{designpattern}n \Gls{mvvm} und \Gls{mvc} gibt bei der Datenpräsentation und -manipulation. Des weiteren ist auch interessant, mit welchen Werkzeugen bzw. \Gls{jsframework}s die jeweiligen Methoden Zugriffs-performant umgesetzt werden können.
 \subsection{Entwurfsmuster}
 Dieser Teil des Projektes wird in Verwendung eines \Gls{designpattern}s umgesetzt. Zwei \Gls{mv*} \Gls{designpattern}s werden hierbei in Betrachtung gezogen. Zum einen \Gls{mvvm} und zum anderen \Gls{mvc}. Es kommen diese zwei Entwurfsmuster in Frage, da \Gls{mvc} in sehr bekanntes \Gls{designpattern} ist und \Gls{mvvm} eine neuere Variante von \Gls{mvc} ist.
 \subsubsection{MVC}
@@ -156,7 +157,7 @@ Folgende Tabelle zeigt die unterschiedlichen Werte bei der Umsetzung der Beispie
 		Design           & NaN                        &            \checkmark               &             \checkmark              &          \checkmark                           \\
 		Entwicklungszeit & 10                         &             9              &               7            &               10                      \\
 		Performanz       & 10                         &             8              &               5            &                 10                    \\
-		\gls{loc}              & 10                         &             10              &               9            &                   3                  \\
+		\Gls{loc}              & 10                         &             10              &               9            &                   3                  \\
 		Gesamtpunkte     & 30                         &              26             &               21            &                23                    
 	\end{tabular}
 \end{table}
@@ -168,7 +169,39 @@ Die Entwicklungszeit zwischen den zwei \Gls{framework}s ist sehr ähnlich. Jedoc
 \subparagraph{Performanz}
 Ohne \Gls{framework} ist die Performanz sehr gut, da im Hintergrund keine \Gls{framework}s geladen werden müssen. Das \Gls{js} wird direkt ausgeführt. Bei \Gls{vue} und \Gls{react} wird viel im Hintergrund geladen und dadurch braucht es länger. Obwohl Komponenten verwendet worden sind, ist \Gls{vue} performanter als \Gls{react}.
 \subparagraph{\Gls{loc}}
-Die beiden \Gls{framework}s haben besonders gut abgeschnitten, da für die Umsetzung mit \Gls{vue} nur wenige Codezeilen geschrieben worden sind, da dass meiste simpel mit der Funktionalität von \Gls{vue} umsetzbar ist. \Gls{react} ist auch sehr gut, da auch sehr wenige Codezeilen geschrieben werden mussten. Jedoch wurde hier allgemein gesagt mehr selbst geschrieben, wodurch es nicht die vollen Punkte verdient. Ohne \Gls{framework} hat am wenigsten Punkte erhalten, da die Umsetzung nicht nur unübersichtlich und kompliziert im Vergleich ist, sonder auch, weil man damit rechnen muss, dass bei größeren Beispielen die Umsetzung noch komplizierter und unübersichtlicher wird.
+Die beiden \Gls{framework}s haben besonders gut abgeschnitten, da für die Umsetzung mit \Gls{vue} nur wenige Codezeilen geschrieben worden sind, da das meiste mit der Funktionalität von \Gls{vue} umsetzbar ist. \Gls{react} ist auch sehr gut, da auch sehr wenige Codezeilen geschrieben werden mussten. Jedoch wurde hier allgemein gesagt mehr selbst geschrieben, wodurch es nicht die vollen Punkte verdient. Ohne \Gls{framework} hat am wenigsten Punkte erhalten, da die Umsetzung nicht nur unübersichtlich und kompliziert im Vergleich ist, sonder auch, weil man damit rechnen muss, dass bei größeren Beispielen die Umsetzung noch komplizierter und unübersichtlicher wird.
 \subsection{Aufbereitung der Daten}
-Erwähnen, warum JSON (referenz auf michi)
+Die Daten, welche von der REST-Schnittstelle gelesen werden, sind im \Gls{json} Format. Dies wird genauer im Kapitel \hyperref[sec:json]{Kommunikation und Datenformate} erklärt. Um die Daten von der REST-Schnittstelle zu bekommen wird \Gls{axios} verwendet. Mit dieser Bibliothek, kann eine \Gls{http}-Anfrage gesendet werden und damit die Daten von der REST-Schnittstelle ausgelesen werden. Im folgenden Code wird eine Beispiel-Anfrage gesendet:
+\begin{code}{html}
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<!-- Import von Axios -->
+			<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+			<meta charset="UTF-8">
+			<title>Axios-Anfrage</title>
+		</head>
+		<body>
+			<script>
+				// Anfrage an den Server um die Daten zu bekommen
+				axios.get("http://localhost:3000/data").then(response => {
+					//Die Daten, die zurückkommen werden in der Konsole ausgegeben
+					console.log(response.data);
+				})
+			</script>
+		</body>
+	</html>
+\end{code}
+Die Daten welche von der Anfrage zurückkommen können dann verwendet werden, um \Gls{html}-Elemente zu erstellen oder zu verändern, um das \Gls{frontend} dynamisch mit den Daten zu füllen.\\Nachdem nicht alle Daten immer gebraucht werden, kann bei den Anfragen die Endung verändert werden, um spezifische Daten abzufragen. Dies muss natürlich von der REST-Schnittstelle unterstützt werden. Eine Beispiel Anfrage für solch eine spezifische Anfrage ist wie folgt:
+\begin{code}{js}
+	// Hier werden zb. die Daten von dem Benutzer 1234 abgefragt und zurückgegeben.
+	axios.get("http://localhost:3000/user/1234/infos").then(response => {
+		//Die Daten, die zurückkommen werden in der Konsole ausgegeben
+		console.log(response.data);
+	})
+\end{code}
+
+Die praktische Durchführung ist, wie bereits im vorherigen Kapitel besprochen, bei den Umsetzungsmöglichkeiten unterschiedlich.
+
 \subsection{Fazit}
+Nun ist es relativ simpel sich für eine Umsetzungsmöglichkeit zu entscheiden. Die vermutlich einfachste Variante für mich ist die Umsetzung des \Gls{mvvm}-\Gls{designpattern} mit dem \Gls{jsframework} \Gls{vue}. Dies kommt vor allem auf die Spezialisierung des \Gls{designpattern} an, da \Gls{mvvm} genau auf Web basierte Anwendungen zugeschnitten ist. \Gls{vue} auf der anderen Seite ist zu bevorzugen, da durch die Komponenten viel Zeit und somit auch Arbeit gespart werden kann und zum Zweiten, dass ich als Entwickler bereits Vorkenntnisse mit diesem \Gls{framework} habe und somit schneller als mit \Gls{react} zu dem gewünschten Ziel kommen werde.
