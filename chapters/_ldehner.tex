@@ -7,9 +7,9 @@
 	
 		\subsubsection{HTML}
 		HTML ist eine \Gls{auszeichnungssprache} steht für \textit{Hypertext Markup Language} und wurde 1989 von dem britischen Informatiker Tim Burners-Kee veröffentlicht.\\ 
-		\textit{\enquote{Hypertext bezeichnet die Möglichkeit, Texte mit Hilfe von Hyperlinks oder kurz Links miteinander zu verbinden.}}\cite{html5-css3-def}\\ 
+		\textit{\enquote{Hypertext bezeichnet die Möglichkeit, Texte mit Hilfe von Hyperlinks oder kurz Links miteinander zu verbinden}}\cite{html5-css3-def}.\\ 
 		Dies heißt, dass man mittels Hypertexts auf der Seite beliebig Herumspringen kann.
-		Auszeichnungssprachen werden im Fachjargon auch als \textit{Markup Language (ML)} bezeichnet. \textit{Markup Languages} werden in zwei verschiedene Gruppen aufgeteilt, zum einen \textit{Procedural Markup Languages (PML)}, das sind jene Auszeichnungssprachen, die für die Verarbeitung von Daten optimiert sind. Zum anderen \textit{Descriptive Markup Languages (DML)}, diese sind für die logische Strukturierung von Daten da.\\Bekannte Beispiele hierfür wären:
+		Auszeichnungssprachen werden im Fachjargon auch als \textit{Markup Language (ML)} bezeichnet \cite{auszeichnungssprachen}. \textit{Markup Languages} werden in zwei verschiedene Gruppen aufgeteilt, zum einen \textit{Procedural Markup Languages (PML)}, das sind jene Auszeichnungssprachen, die für die Verarbeitung von Daten optimiert sind. Zum anderen \textit{Descriptive Markup Languages (DML)}, diese sind für die logische Strukturierung von Daten da.\\Bekannte Beispiele hierfür wären:
 		\begin{itemize}
 		\item PML
 		\subitem PDF
@@ -18,7 +18,7 @@
 		\subitem HTML
 		\subitem SVG
 		\end{itemize}
-		\textit{HTML} ist hauptsächlich dafür da, um Texte, Grafiken und Hyperlinks (Links) darzustellen. Die Bearbeitung von \textit{HTML-Dokumenten} ist relativ einfach und unkompliziert, da es eine reine textbasierte Sprache ist und mit jedem Texteditor bearbeitet werden kann.\\
+		\textit{HTML} ist hauptsächlich dafür da, um Texte, Grafiken und Hyperlinks (Links) darzustellen \cite{html5-css3-handbuch, html5-css3-def}. Die Bearbeitung von \textit{HTML-Dokumenten} ist relativ einfach und unkompliziert, da es eine reine textbasierte Sprache ist und mit jedem Texteditor bearbeitet werden kann.\\
 		Allerdings ist \textit{HTML} nicht mit einer Programmiersprache zu verwechseln, da nur \Gls{tag}s und keine Befehle oder Anweisungen verwendet werden. Solche Tags können wie folgt aussehen:
 		\begin{code}{html}
 			<tagname>Tag Inhalt</tagname>
@@ -47,12 +47,10 @@
 			\label{fig:htmlbsp}
 		\end{figure}
 		~\\
-		Da \textit{HTML} nur für die Grundstruktur einer Website gedacht ist, also zum beschreiben der Struktur und des Inhalts schaut die Seite noch nicht sonderlich ansprechend aus. Um das zu verändern ist I benötigt.
-		\cite{auszeichnungssprachen}
-		\cite{html5-css3-handbuch}
-		\cite{html5-css3-def}
+		Da \textit{HTML} nur für die Grundstruktur einer Website gedacht ist, also zum beschreiben der Struktur und des Inhalts schaut die Seite noch nicht sonderlich ansprechend aus. Um das zu verändern ist CSS benötigt.
+		
 		\subsubsection{CSS}
-		\textit{Cascading Stylesheets} oder kurz \textit{CSS} ist wie der Name schon sagt für den \textit{Style}, also für das Aussehen der Website verantwortlich. Da \textit{HTML} Anfangs nur im Printbereich verbreitet war, war es nicht notwendig die Seiten zu gestalten. Das Internet bekam aber einen immer stärker werdenden Einfluss und daher auch eine höhere Bekanntheit deswegen wurde \textit{HTML} mit der Formatierungssprache \textit{CSS} ergänzt.\\
+		\textit{Cascading Stylesheets} oder kurz \textit{CSS} ist wie der Name schon sagt für den \textit{Style}, also für das Aussehen der Website verantwortlich. Da \textit{HTML} Anfangs nur im Printbereich verbreitet war, war es nicht notwendig die Seiten zu gestalten \cite{html5-css3-def, html5-css3-handbuch}. Das Internet bekam aber einen immer stärker werdenden Einfluss und daher auch eine höhere Bekanntheit deswegen wurde \textit{HTML} mit der Formatierungssprache \textit{CSS} ergänzt.\\
 		Mittels CSS ist unter anderem folgende Dinge möglich:
 		\begin{itemize}
 			\item Hintergrund ändern
@@ -105,12 +103,10 @@
 			</head>
 		\end{code}
 		Wie man erkennen kann ist dem ganzen keine Ende gesetzt und mit viel Aufwand kann man so ziemlich alles verändern. Um den Aufwand jedoch gering zu halten sind \textit{SASS} und \textit{CSS-Frameworks} da, zu welchen wir später kommen.
-		\cite{html5-css3-def}
-		\cite{html5-css3-handbuch}
 		\subsubsection{JS}
 		\textit{JavaScript} wird nur sehr kurz besprochen, da es für diesen Teil keine große Rolle spielt. Es wird verwendet um den Elementen Funktionen zu geben, also zum Beispiel, dass wenn man auf einen Button drückt ein Fenster aufpoppt, ein neues Element hinzugefügt wird oder ein Element im Nachhinein verändert wird. Da \textit{JavaScript} eine Skriptsprache ist kann man auch eigene Funktionen schreiben und Variablen verwenden. Für das Designen brauch man JS fast nur, wenn man nur mit \textit{CSS} oder \textit{SASS} arbeitet, wenn man ein \textit{Framework} verwendet haben diese meist ein \textit{JavaScript-Framework} inkludiert und man muss fast kein \textit{JavaScript} mehr verwenden.
 	\subsection{SASS}
-	\textit{Syntactically Awesome Style Sheets} oder kurz \textit{SASS} ist eine Erweiterung von \textit{CSS}. Genauer gesagt fügt es \textit{CSS} ein paar Funktionalitäten von \textit{JS} hinzu. \textit{SASS} wird aber nicht wie \textit{CSS} direkt in das \textit{HTML-File} eingebunden und kann auch nicht direkt in ein Element geschrieben wird. Das \textit{.sass} File muss erst kompiliert werden, dann wird ein \textit{.css} File generiert, welches man im \textit{HTML-Code} einbinden kann. Man kann unter anderem Funktionen erstellen um Elemente zu verändern, dass man nicht alles händisch schreiben muss. Außerdem kann man Variablen festlegen und so zum Beispiel eine Primärfarbe festzulegen, wodurch man sich nicht immer den \textit{HEX-Code} von einer bestimmten Farbe merken muss. Ebenfalls kann man durch die Variablen die Farbe von mehreren Elementen auf Einmal ändern. Dadurch kann man zum Beispiel Light- und Darktheme in die Website einbauen.\\Beispiele für die oben genannten Funktionen wären:
+	\textit{Syntactically Awesome Style Sheets} oder kurz \textit{SASS} ist eine Erweiterung von \textit{CSS} \cite{jump-start-sass}. Genauer gesagt fügt es \textit{CSS} ein paar Funktionalitäten von \textit{JS} hinzu. \textit{SASS} wird aber nicht wie \textit{CSS} direkt in das \textit{HTML-File} eingebunden und kann auch nicht direkt in ein Element geschrieben wird. Das \textit{.sass} File muss erst kompiliert werden, dann wird ein \textit{.css} File generiert, welches man im \textit{HTML-Code} einbinden kann. Man kann unter anderem Funktionen erstellen um Elemente zu verändern, dass man nicht alles händisch schreiben muss. Außerdem kann man Variablen festlegen und so zum Beispiel eine Primärfarbe festzulegen, wodurch man sich nicht immer den \textit{HEX-Code} von einer bestimmten Farbe merken muss. Ebenfalls kann man durch die Variablen die Farbe von mehreren Elementen auf Einmal ändern. Dadurch kann man zum Beispiel Light- und Darktheme in die Website einbauen.\\Beispiele für die oben genannten Funktionen wären:
 
 %	\begin{code}{sass}
 	%	$standard-width: 200px
@@ -131,11 +127,17 @@
 	%	}
 %	\end{code}
 	
-	\cite{jump-start-sass}
+	
 	\subsection{Frameworks}
-	Frameworks für HTML, CSS und JS beinhalten vorgestaltete Komponenten, welche mittels Klassen einem HTML Element hinzugefügt werden. Beim Einbinden eines Frameworks gibt es verschiedene Möglichkeiten.
-	\Gls{css} \Gls{framework}s
+	Frameworks für HTML, CSS und JS beinhalten vorgestaltete Komponenten, welche mittels Klassen einem HTML Element hinzugefügt werden. Da Frameworks das Arbeiten an einem Projekt wesentlich einfacher machen und wir dieses Hilfsmittel auch benutzen werden müssen folgende Fragen beantwortet werden um das optimale Framework für dieses Projekt auszuwählen:
+	\begin{itemize}
+		\item Welche CSS-Frameworks unterstützen explizit die User-Experience und Usability?
+		\item Welche Vor- und Nachteile bringen diese Frameworks mit sich?
+	\end{itemize}
+	Zum Vergleich werden vier sehr verbreitete und geschätzte Frameworks gerangezogen:
 		\subsubsection{Bootstrap}
+		Bootstrap ist das Framework, welches am bekanntesten ist und am meisten verwendet wird \cite{introduction-bootstrap, learning-bootstrap}. Das von Twitter entwickelte Framework hat mit der aktuellen Version 4.5 viele verschiedene Komponenten die optimal für erfahrene Entwickler als auch für Anfänger ist. In der Dokumentation von Bootstrap gibt es einige Templates und sehr viel gut dokumentierten Beispiel Code\cite{introduction-bootstrap}. Bootstrap kann über einen Paketmanager, ein CDN oder als heruntergeladene Dateien zur HTML Datei hinzugefügt werden.
+		\cite{introduction-bootstrap, learning-bootstrap}
 		\subsubsection{Materialize}
 		\subsubsection{ZURB Foundation}
 		\subsubsection{Tailwind CSS}
