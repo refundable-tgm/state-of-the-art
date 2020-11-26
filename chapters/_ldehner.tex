@@ -198,5 +198,39 @@
 		\end{itemize}
 
 	\subsection{Vergleich}
-	
-	\subsection{Zielgruppenorientiertes Design}
+	Der Vergleich der Frameworks setzt sich aus dem Umfang, den Erweiterungen, dem Aussehen, der Leichtigkeit im Bezug auf das Erlernen des Frameworks, dem Umfang der Dokumentation, der Kompatibilität mit VueJS und unserer Erfahrung mit dem jeweiligen Framework.\\
+	Die Punkte (0-9) setzen sich immer in der Relation mit den anderen Frameworks zusammen. Alle dafür benötigten Informationen wurden von der jeweiligen Dokumentationsseite entzogen.
+	\begin{table}
+		\begin{tabular}{rccc}
+			\hline
+			\multicolumn{1}{|r|}{{\underline{\textbf{Kriterien}}}} & \multicolumn{1}{c|}{{\underline{\textbf{Bootstrap}}}} & \multicolumn{1}{c|}{{ \underline{\textbf{Materialize}}}} & \multicolumn{1}{c|}{{\underline{\textbf{Foundation}}}} \\ \hline
+			\multicolumn{1}{|r|}{\textbf{Umfang}}          & \multicolumn{1}{c|}{9}                        & \multicolumn{1}{c|}{9}                          & \multicolumn{1}{c|}{7}                         \\ \hline
+			\multicolumn{1}{|r|}{\textbf{Erweiterungen}}   & \multicolumn{1}{c|}{9}                        & \multicolumn{1}{c|}{3}                          & \multicolumn{1}{c|}{7}                         \\ \hline
+			\multicolumn{1}{|r|}{\textbf{Aussehen}}        & \multicolumn{1}{c|}{6}                        & \multicolumn{1}{c|}{9}                          & \multicolumn{1}{c|}{5}                         \\ \hline
+			\multicolumn{1}{|r|}{\textbf{Leichtigkeit}}    & \multicolumn{1}{c|}{6}                        & \multicolumn{1}{c|}{9}                          & \multicolumn{1}{c|}{8}                         \\ \hline
+			\multicolumn{1}{|r|}{\textbf{Dokumentation}}   & \multicolumn{1}{c|}{9}                        & \multicolumn{1}{c|}{6}                          & \multicolumn{1}{c|}{9}                         \\ \hline
+			\multicolumn{1}{|r|}{\textbf{Kompatibilität}}  & \multicolumn{1}{c|}{9}                        & \multicolumn{1}{c|}{5}                          & \multicolumn{1}{c|}{7}                         \\ \hline
+			\multicolumn{1}{|r|}{\textbf{Erfahrung}}       & \multicolumn{1}{c|}{5}                        & \multicolumn{1}{c|}{9}                          & \multicolumn{1}{c|}{0}                         \\ \hline
+			\textbf{Gesamt}                                & 53                                            & 50                                              & 43                                            
+		\end{tabular}
+	\end{table}
+\subsubsection{Umfang}
+Die Punktevergabe des Umfangs setzt sich zusammen aus der Anzahl, der Komponenten und und Hilfsklassen. Bootstrap und Materialize haben mit 53 und 55 in etwa die selbe Anzahl und bekommen daher die Maximalpunktzahl\cite{bootstrap-docu,materialize-docu,foundation-docu}. Foundation hat hingegen nur 41 Elemente und hat daher nur 7 Punkte bekommen.
+\subsubsection{Erweiterungen}
+Bootstrap hat durch das langjährige Bestehen und dadurch, dass es das meistverwendete Framework ist logischerweise am meisten Erweiterung, die Schwächen, wie zum Beispiel das Standarddesign wieder ausmerzen, deswegen hat Bootstrap hier auch die volle Punkteanzahl bekommen \cite{introduction-bootstrap}. Materialize hingegen hat nur sehr wenige Erweiterungen zur Verfügung, deswegen hat dieses Framework nur 3 Punkte bekommen. Foundation hingegen hat wiederum eine ausreichende Auswahl an Plugins, die sogar in der Dokumentation verlinkt sind \cite{foundation-docu}. 
+\subsubsection{Aussehen}
+Bei dem Aussehen des Standard-Designs gewinnt klar und deutlich Materialize, da es die ansprechendste Darstellung mit einem schönen Design bietet \cite{materialize-docu}. Bootstrap und Foundation legen mehr wert auf die Funktionalität des Frameworks und legen weniger Wert auf das Aussehen, was man deutlich merkt \cite{bootstrap-docu, foundation-docu}.
+\subsubsection{Leichtigkeit}
+Aus eigener Erfahrung können wir sagen, dass Materialize wirklich einfach zum erlernen ist \cite{materialize-docu}. Bei einem groben Einlernen in Foundation haben wir auch hier festgestellt, dass es 
+\subsubsection{Dokumentation}
+Auf den ersten Blick erscheint die Dokumentation von Materialize als sehr gut, jedoch ist der Beispielcode in manchen Fällen unvollständig und man muss sich mit mühsamer Recherche nach Lösungen erkunden \cite{materialize-docu}. Bootstrap und Foundation sind soweit wir dies beurteilen konnten jedoch sehr gut dokumentiert, haben viele Code-Beispiele und in manchen Fällen sogar mit Code-Pen Beispielen bestückt \cite{bootstrap-docu, foundation-docu}.
+
+\subsubsection{Kompatibilität}
+Wie im 2. Hauptkapitel geschildert wird, werden wir als JS Framework VueJS verwenden. Kompatibel sind alle Frameworks, jedoch ist Bootstrap für die Zusammenarbeit mit Vue optimiert \cite{bootstrap-docu}. Da das Projektteam in einem früheren Projekt bereits Materialize mit Vue benutzt hat, ist bekannt, dass es mit den zwei Frameworks in Verbindung einige Probleme gibt. Foundation ist nicht speziell dafür optimiert mit Vue zusammenzuarbeiten, jedoch ist die Funktionalität tolerant.  
+
+\subsubsection{Erfahrung}
+Das Frontend-Team hat bis jetzt hauptsächlich Erfahrung mit Materialize gemacht. Bootstrap wurde in der Schule kurz angeschnitten, aber im privaten Umfeld etwas vertieft. Mit Foundation hingegen wurde noch keine Erfahrung gemacht.
+
+\subsubsection{Fazit}
+Aus dem Vergleich lässt sich nun schließen, dass Bootstrap die beste Lösung für das Diplomprojekt Refundable ist. Dieses gewonnenes Erkenntnis werden wir verwerten und werden das Framework Bootstrap auch in der Realität verwenden.
+
