@@ -51,8 +51,39 @@
 	\end{enumerate}
 	Die Start- und Stoppvorgänge müssen dann nur mit Docker Compose interagieren. Beim Updatevorgang werden die Repositories abgeglichen. Falls eine neue Version verfügbar ist, wird diese heruntergeladen. Die Container werden dann dementsprechend neugestartet. Der Cleanvorgang säubert das System von allen nicht mehr benötigten Docker Containern, Images und Networks. Zuletzt macht der Deinstallationsvorgang einfach den Installationsvorgang rückgängig.
 	\subsection{REST-Schnittstelle}
-	%Was ist eine REST-Schnittstelle
-		\subsubsection{Sprache und Framework}
-		%Welche Sprache und Frameworks nutze ich
+	Bei einer REST-Schnittstelle handelt es sich um einen bestimmten Aufbau einer Softwareschnittstelle bei verteilten Systemen \cite{Patni2017}. Das hierbei angewendete Prinzip nennt sich \enquote{Representational State Transfer} (kurz REST). Es zeichnet sich durch folgende Eigenschaften aus:
+	\begin{itemize}
+		\item \textbf{Client-Server}, wobei es um eine strikte Trennung zwischen dem Client (dem REST-Client) und dem Server (der REST-Schnittstelle, als Webservice) geht
+		\item \textbf{Stateless}, wobei es um die Zustandslosigkeit des Servers geht. Das heißt, dass der Server sich keinerlei Zustände der Clients merkt.
+		\item \textbf{Caching}: Der Server speichert die Responses zwischen. Dadurch kann die Latenzzeit minimiert werden, da Daten öfters zurückgegeben werden, anstatt sie jedes Mal erneut berechnen zu müssen.
+		\item \textbf{Einheitliche Schnittstelle} bedeutet, dass die Schnittstelle ein einheitliches Datenformat verwendet, um via HTTP über CRUD-Methoden (Create, Read, Update, Delete) zu kommunizieren.
+		\item \textbf{Layer-System} bedeutet, dass die Schnittstelle, als Webservice so designed wird, dass auch weitere Schichten, wie Gateways und Proxies, transparent dazwischen aufgebaut werden können.
+		\item \textbf{Code-on-demand} (optional): Hierbei besteSht die Möglichkeit ausführbaren Code an die Clients zu schicken, sodass diese den dann ausführen können.
+	\end{itemize}
+		\subsubsection{Java und Spring}
+		Java ist eine der bekanntesten Programmiersprachen. Sie zeichnet sich durch Plattform-Unabhängigkeit aus\cite{jdkDocs}. Um dies zu erreichen, wird Bytecode von einem eigenem Programm - der Java Virtual Machine - interpretiert. Java arbeitet objektorientiert und ist statisch typisiert, dies bedeutet, dass bereits vor dem Ausführen die Datentypen klar sind. Java unterstützt auch Multithreading. Um einfach eine REST-Schnittstelle in Java bauen zu können, wird Spring Boot genutzt \cite{springDocs}. Die Verwendung von Spring ermöglicht Webapps, Tasks oder Microservices einfacher umzusetzen. Prinzipiell arbeitet Spring asynchron und flexibel, sodass es einfach zu skalieren ist. 
+		
+		\subsubsection{Python und Flask}
+		Um mit Python eine REST-Schnittstelle zu realisieren muss auf das Package (Framework) Python Flask zurückgegriffen werden \cite{flaskDocs}. Flask wird hierbei dazu gezogen, um den Webservice zu bauen. Python und Java unterscheiden sich prinzipiell sehr. Python ist im Gegensatz zu Java dynamisch typisiert, dies bedeutet, dass eine Variablendeklaration nicht notwendig ist und der Datentyp einer Variable erst zur Laufzeit klar ist \cite{pythonDocs}. Anders als Java setzt Python auf Third-Party Packages, welche sehr einfach importiert werden können. Durch die große Community Pythons, ist ein Großteil der Tools, die man benötigt, meist schon vorprogrammiert und kann einfach importiert werden. Zusätzlich ist der Syntax - speziell was Zeichensetzung anbelangt - einfacher zu Verstehen, als jener von Java.
+		
+		\subsubsection{Golang}
+		Golang (kurz Go) ist eine von Google entwickelte und publizierte Programmiersprache \cite{goDocs}. Sie wurde aus der Unzufriedenheit über Java, C++ und Python heraus entwickelt, welche am häufigsten bei Google eingesetzt wurden. All diese Programmiersprachen haben Nachteile in Googles Business Case, deswegen wurde Go speziell für skalierbare Netzwerkdienste und Cloud Computing entwickelt. Aus diesem Grund besitzt Go auch eine native Möglichkeit für den einfachen Aufbau von REST-Schnittstellen. Da bei der Entwicklung von Go speziell aus den Fehlern in Performance und Sprachdesign aus anderen Sprachen gelernt wurde, verbindet Go die Vorteile der anderen Sprachen. Darunter fallen die starke und statische Typisierung, Objektorientierung, Pointer und eine verbesserte Compiler-Effizienz.
+		\subsubsection{Vergleich}
+		Diese drei Sprache werden nun in den Aspekten der Performance, dem Sprachdesign, der Komplexität des Aufbaus einer REST-Schnittstelle, das Vorhandensein von Frameworks, die Erfahrung des Teams und eine vorhandene ausführliche Dokumentation. Hierbei wird auf einer Punkteskala von 1 - 10 bewertet.
+		\begin{table}
+			\begin{tabular}{|l|r|r|r|r|r|r|r|}
+				\hline
+				\multicolumn{1}{|c|}{\textbf{Kriterien}} & \multicolumn{1}{c|}{\textbf{Gewichtung}} & \multicolumn{2}{c|}{\textbf{Java und Spring}} & \multicolumn{2}{c|}{\textbf{Python und Flask}} & \multicolumn{2}{c|}{\textbf{Golang}} \\ \cline{3-8} 
+				& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{Punkte} & \multicolumn{1}{c|}{Wertung} & \multicolumn{1}{c|}{Punkte} & \multicolumn{1}{c|}{Wertung} & \multicolumn{1}{c|}{Punkte} & \multicolumn{1}{c|}{Wertung} \\ \hline
+				Performance & 15\% & 7 & 1,05 & 4 & 0,6 & 10 & 1,5 \\ \hline
+				Sprachdesign & 25\% & 7 & 1,75 & 5 & 1,25 & 9 & 2,25 \\ \hline
+				\begin{tabular}[c]{@{}l@{}}Aufbau einer \\ REST-Schnittstelle\end{tabular} & 5\% & 8 & 0,4 & 9 & 0,45 & 10 & 0,5 \\ \hline
+				\begin{tabular}[c]{@{}l@{}}Vorhandensein von\\ Frameworks\end{tabular} & 15\% & 8 & 1,2 & 10 & 1,5 & 10 & 1,5 \\ \hline
+				\begin{tabular}[c]{@{}l@{}}Erfahrung des \\ Teams\end{tabular} & 20\% & 5 & 1 & 4 & 0,8 & 7 & 1,4 \\ \hline
+				Dokumentation & 20\% & 9 & 1,8 & 8 & 1,6 & 10 & 2 \\ \hline
+				\textbf{Summe} & 100\% & \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{\textbf{7,2}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{6,2}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{9,15}} \\ \hline
+			\end{tabular}
+		\end{table}
+		Daraus und aus der durchgeführten Recherche, lässt sich schließen, dass Golang sich speziell bei den Punkten Performance und Sprachdesign durchsetzen kann. Ansonsten schneiden die verschiedenen Sprachen inklusive der teilweise benötigten Frameworks großteils ähnlich hoch ab. Zusammenfassend eignet sich die Verwendung von Golang am Besten als Programmiersprache für unser Projekt, da sie im numerischen Vergleich mit der höchsten Punktezahl abschnitt, aber auch durch die speziellen Hintergründe ihrer Entwicklung genau zu den Voraussetzungen passt.
 	\subsection{Kommunikation und Datenformate}
-	% Forschungsfrage
+	
