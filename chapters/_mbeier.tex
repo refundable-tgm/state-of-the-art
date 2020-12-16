@@ -129,8 +129,26 @@
 		Über einen JSON-Generator kann ein JSON-Text auf Basis eines Dateninputs generiert werden. Wenn die Daten aus dem JSON-Textformat wieder extrahiert werden sollen spricht man vom \enquote{parsen} von Daten.\\
 		Jede moderne Programmiersprache hat einen eigenen JSON-Parser implementiert oder es ist möglich einen über ein \Gls{tpp} zu laden.
 		\subsubsection{XML}
+		\Gls{xml} (Extensible Markup Language) ist ein strukturiertes textbasiertes Datenformat \cite{xmlStandard}. Es handelt sich hierbei um eine Markup-Language. Als Syntax von XML werden Tags verwendet welche, wobei ein <Tag> ein Anfangs-Tag ist und ein </Tag> ein End-Tag ist. Ebenfalls können Attribute in einem Anfangs-Tag definiert werden (<Tag attribut='wert'). XML-Dateien brauchen im Gegensatz zu JSON-Texten ein Wurzelelement.
+		\begin{code}{xml}
+		<school>
+			<classes>
+				<class lastYear="false" students="35" class-rep="null">1AHIT</class>
+				<class lastYear="true" students="25" class-rep="null">5BHIT</class>
+			</classes>
+			<date>2021-09-01</date>
+		</school>
+		\end{code}
+		\captionof{listing}{XML Beispiel}
+		\label{code:xml}~\\
+		Das Beispiel definiert ein Wurzelelement für die Datenstruktur namens \enquote{school}. Dieses hat ein Kindelement \enquote{classes}. In diesem sind einzelne \enquote{class}-Tags mit den nötigen Attributen und dem Namen der Klasse innerhalb der Tags. Dies wird als Alternative für die in XML nicht vorhandenen Arrays genutzt. Zuletzt wird wieder ein \enquote{date}-Kindelement mit dem aktuellem Datum als Inhalt hinzugefügt.\\~\\
+		Das XML-Dateiformat kann entweder gültig oder wohlgeformt sein \cite{xmlStandard}. Dies beschreibt die Einhaltung des Syntax und der Regeln des XML Standards.\\
+		Des Weiteren besteht die Möglichkeit die Struktur von XML-Dateien anhand der XML-Schema-Sprache oder durch die Document Type Definition zu beschreiben. XML Dateien brauchen aus diesen Gründen unbedingt einen Parser für die Umwandlung.
+		
+		\newpage
+		
 		\subsubsection{CSV}
-		CSV (Comma-Separated Values) ist ein Textformat, mit welchem man Tabellen textbasiert darstellen kann \cite{rfc4180}. Hierbei werden Spalten durch \enquote{,} getrennt und Zeilen durch einen Zeilenumbruch (CRLF; LF). Die erste Zeile repräsentiert die Namen der Spalten. Eine Beschreibung einer Tabelle mit CSV sieht wie folgt aus:
+		CSV (Comma-Separated Values) ist ein Textformat, mit welchem man Tabellen textbasiert darstellen kann \cite{rfc4180}. Hierbei werden Spalten durch , getrennt und Zeilen durch einen Zeilenumbruch (CRLF; LF). Die erste Zeile repräsentiert die Namen der Spalten. Eine Beschreibung einer Tabelle mit CSV sieht wie folgt aus:
 		\begin{code}{python}
 			Class,lastYear,students,class-rep
 			1AHIT,false,35,null
@@ -138,7 +156,7 @@
 		\end{code}
 		\captionof{listing}{CSV Beispiel}
 		\label{code:csv}~\\
-		Im Beispiel werden die beiden Klassen als zwei Datensätze in einer Tabelle aufgelistet. Auf Grund der Struktur von CSV ist es nur möglich den Array-Teil des Objektes darzustellen. Ansonsten ist der CSV-Standard recht simpel gehalten. Der letzte Punkt auf den der Standard hierbei eingeht ist, dass \enquote{"}-Zeichen um die Daten gesetzt werden können \cite{rfc4180}. Sollten, diese nicht geschlossen werden kann es jedoch zu unvorhersehbaren Verhalten kommen.
+		Im Beispiel werden die beiden Klassen als zwei Datensätze in einer Tabelle aufgelistet. Auf Grund der Struktur von CSV ist es nur möglich den Array-Teil des Objektes darzustellen. Ansonsten ist der CSV-Standard recht simpel gehalten. Der letzte Punkt auf den der Standard hierbei eingeht ist, dass "-Zeichen um die Daten gesetzt werden können \cite{rfc4180}. Sollten, diese nicht geschlossen werden kann es jedoch zu unvorhersehbaren Verhalten kommen.
 		\subsubsection{Vergleich}
 		Ein Vergleich zwischen den Datenformaten JSON, XML und CSV ist auf dem ersten Blick nicht zielführend. Wie aus den einzelnen Beschreibungen der Technologien oben entnommen werden kann, handelt es sich beim CSV-Format um Tabellen. Bereits bei der \hyperref[sec:db]{Wahl der dokumentenorientierten Datenbank MongoDB} war der Hintergedanke relationale Datenbanken und ihrer Speicherstruktur, Tabellen, weitestmöglich zu vermeiden. 
 		
