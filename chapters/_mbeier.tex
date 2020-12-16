@@ -16,12 +16,13 @@
 		Um die Daten, die durch Refundable erhoben und generiert werden, zu speichern, benötigen wir eine \gls{db}. Auf Grund der Daten, welche sich durch unterschiedliche Datenstrukturen auszeichnen, ist der Einsatz einer \gls{relDb} nicht sinnvoll. Stattdessen empfiehlt sich die Verwendung einer \gls{nosqlDb}.
 		Standardmäßig wird zwischen 4 verschiedenen Typen von NoSQL Datenbanken unterschieden, welche jeweils nur in ihrem eigenen Use Cases sinnvoll anwendbar sind \cite{nosqltypes}:
 		\begin{itemize}
-			
 			\item Key-Value Datenbank
 			\item spaltenorientierte Datenbank
 			\item graphenorientierte Datenbank
 			\item dokumentenorientierte Datenbank
-		\end{itemize}			
+		\end{itemize}
+		\captionof{listing}{NoSQL Datenbank-Typen}
+		\label{code:nosqltypes}~\\	
 		Bei Key-Value Datenbanken wird einem Schlüssel ein Wert hinterlegt. Dieser Wert ist dann jederzeit über den Schlüssel in der Datenbank abrufbar. Für unseren Use Case ist dieses System nicht sinnvoll anzuwenden, da die von uns benutzten Daten hierfür zu komplex im Aufbau sind.~\\
 		Bei spaltenorientierten Datenbanken werden Daten vorrangig über ihre Spalten (statt wie bei relationalen \gls{db}s in Zeilen) analysiert. Dies ermöglicht die einfache Umsetzung statistischer Methoden auf Basis der Spalten. Da jedoch wieder eine Tabelle als Grundstruktur vorliegt, ist dieser Typ von Datenbank nicht sinnvoll anwendbar für Refundable.~\\
 		Bei graphenorientierten Daten wird vorrangig auf die Beziehung zwischen einzelnen Elementen geschaut. Daten werden hierbei in Knoten gespeichert, welche zu anderen Verbunden werden können. Die primären Elemente sind hierbei die Beziehungen, anstatt der Daten selbst. Da die Daten von Refundable nicht über starke Beziehungen charakterisiert sind, ist auch dieser \gls{db}-Typ nicht sinnvoll zu benutzen.~\\		
@@ -50,8 +51,10 @@
 		\item \textbf{Caching}: Der Server speichert die Responses zwischen. Dadurch kann die Latenzzeit minimiert werden, da Daten öfters zurückgegeben werden, anstatt sie jedes Mal erneut berechnen zu müssen.
 		\item \textbf{Einheitliche Schnittstelle} bedeutet, dass die Schnittstelle ein einheitliches Datenformat verwendet, um via HTTP über CRUD-Methoden (Create, Read, Update, Delete) zu kommunizieren.
 		\item \textbf{Layer-System} bedeutet, dass die Schnittstelle, als Webservice so designed wird, dass auch weitere Schichten, wie Gateways und Proxies, transparent dazwischen aufgebaut werden können.
-		\item \textbf{Code-on-demand} (optional): Hierbei besteSht die Möglichkeit ausführbaren Code an die Clients zu schicken, sodass diese den dann ausführen können.
+		\item \textbf{Code-on-demand} (optional): Hierbei besteht die Möglichkeit ausführbaren Code an die Clients zu schicken, sodass diese den dann ausführen können.
 	\end{itemize}
+	\captionof{listing}{Prinzipien des Representation State Transfer}
+	\label{code:rest}
 		\subsubsection{Java und Spring}
 		Java ist eine der bekanntesten Programmiersprachen. Sie zeichnet sich durch Plattform-Unabhängigkeit aus \cite{jdkDocs}. Um dies zu erreichen, wird Bytecode von einem eigenem Programm - der Java Virtual Machine - interpretiert. Java arbeitet objektorientiert und ist statisch typisiert, dies bedeutet, dass bereits vor dem Ausführen die Datentypen klar sind. Java unterstützt auch Multithreading. Um einfach eine REST-Schnittstelle in Java bauen zu können, wird Spring Boot genutzt \cite{springDocs}. Die Verwendung von Spring ermöglicht Webapps, Tasks oder Microservices einfacher umzusetzen. Prinzipiell arbeitet Spring asynchron und flexibel, sodass es einfach zu skalieren ist. 
 		
@@ -76,11 +79,55 @@
 				\textbf{Summe} & 100\% & \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{\textbf{7,2}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{6,2}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{9,15}} \\ \hline
 			\end{tabular}
 		\end{table}
-		\captionof{table}{Vergleich zwischen Java, Python und Golang}\label{tbl:comparison}
+		\captionof{table}{Vergleich zwischen Java, Python und Golang}\label{tbl:comparison}~\\
 		Daraus und aus der durchgeführten Recherche, lässt sich schließen, dass Golang sich speziell bei den Punkten Performance und Sprachdesign durchsetzen kann. Ansonsten schneiden die verschiedenen Sprachen inklusive der teilweise benötigten Frameworks großteils ähnlich hoch ab. Zusammenfassend eignet sich die Verwendung von Golang am Besten als Programmiersprache für unser Projekt, da sie im numerischen Vergleich mit der höchsten Punktezahl abschnitt, aber auch durch die speziellen Hintergründe ihrer Entwicklung genau zu den Voraussetzungen passt.
 	\subsection{Kommunikation und Datenformate}
 	Wie bereits erwähnt, zeichnen sich REST-Schnittstellen unter anderem dadurch aus, dass sie ein einheitliches Datenformat voraussetzen. Aus diesem Grund stellen sich die Fragen: Welche Datenformate eignen sich für einen konsistenten und performanten Datenaustausch zwischen Datenbank, REST-Schnittstelle und Client? Welche Vor- und Nachteile bringen diese im Hinblick auf Performance, Softwarewartung und -evolution?
+	
+	\newpage
+	
 		\subsubsection{JSON}
+		\Gls{json} (JavaScript Object Notation) ist ein Textformat, welches für die Serialisierung von Daten genutzt werden kann \cite{rfc4627}. 
+		Es umfasst 6 Datentypen, davon 4 Primitive und 2 Strukturen:
+		\begin{itemize}
+			\item \Gls{string}s
+			\item Zahlen
+			\item \Gls{bool}s
+			\item \Gls{null}
+			\item \Gls{array}s
+			\item \Gls{object}e
+		\end{itemize}
+		\captionof{listing}{JSON - Datentypen}
+		\label{code:jsontypes}~\\	
+		Wie so eine Serialisierung aussieht, wird in folgendem Beispiel ersichtlich: 
+		
+		\begin{code}{json}
+		{
+			"classes": [
+				{
+					"name": "1AHIT",
+					"lastYear": false,
+					"students": 35,
+					"class-rep": null
+				},
+				{
+					"name": "5BHIT",
+					"lastYear": true,
+					"students": 25,
+					"class-rep": null
+				}
+			],
+			"date": "2021-09-01"
+		}
+		\end{code}
+		\captionof{listing}{JSON Beispiel}
+		\label{code:json}~\\
+		Das hier stehende Beispiel stellt ein Objekt mit zwei Feldern dar. Das erste Feld ist ein \enquote{classes}-Array, welches verschiedene Schulklassen beinhaltet. Diese Schulklassen haben jeweils einen String als Namen, einen Boolean als Feld, das angibt, ob es sich um eine Abschlussklasse handelt, die Anzahl der Schüler als Zahl und den Namen des Klassensprechers, die aktuell - aus folgendem Grund - noch \enquote{null} sind. Nachdem die Definition des Arrays abgeschlossen ist, wird noch ein weiteres Feld im obersten Objekt angegeben, welches das aktuelle Datum als String beinhaltet. Nun ist auch klar, warum die Klassensprecher Felder \enquote{null} sind, da noch keine Zeit war um eine Vertretungswahl abzuhalten.
+		\\~\\
+		Der JSON-Standard umfasst genaue Regeln, wie mit den Datentypen, speziell mit Strings und Zahlen, umzugehen ist \cite{rfc4627}.
+		Über einen JSON-Generator kann ein JSON-Text auf Basis eines Dateninputs generiert werden. Wenn die Daten aus dem JSON-Textformat wieder extrahiert werden sollen spricht man vom \enquote{parsen} von Daten.\\
+		Jede moderne Programmiersprache hat einen eigenen JSON-Parser implementiert oder es ist möglich einen über ein \Gls{tpp} zu laden.
 		\subsubsection{XML}
 		\subsubsection{CSV}
 		\subsubsection{Vergleich}
+		
