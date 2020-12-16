@@ -13,6 +13,7 @@
 	\subsection{Docker}
 	Um die Infrastruktur des Projektes einfach aufbauen zu können, wird \Gls{docker} genutzt. Da es sich hier um eine komplex strukturierte Infrastruktur handelt wird zusätzlich das Werkzeug \Gls{dcompose} genutzt. Mit Docker Compose kann eine Infrastruktur aufgebaut werden, die der \hyperref[fig:uebersicht]{Abbildung - Übersicht} entspricht. Für diese sind folgende Container vorgesehen, die in den nächsten Kapiteln noch ins Detail beschrieben werden.
 		\subsubsection{Datenbank}
+		\label{sec:db}
 		Um die Daten, die durch Refundable erhoben und generiert werden, zu speichern, benötigen wir eine \gls{db}. Auf Grund der Daten, welche sich durch unterschiedliche Datenstrukturen auszeichnen, ist der Einsatz einer \gls{relDb} nicht sinnvoll. Stattdessen empfiehlt sich die Verwendung einer \gls{nosqlDb}.
 		Standardmäßig wird zwischen 4 verschiedenen Typen von NoSQL Datenbanken unterschieden, welche jeweils nur in ihrem eigenen Use Cases sinnvoll anwendbar sind \cite{nosqltypes}:
 		\begin{itemize}
@@ -129,5 +130,22 @@
 		Jede moderne Programmiersprache hat einen eigenen JSON-Parser implementiert oder es ist möglich einen über ein \Gls{tpp} zu laden.
 		\subsubsection{XML}
 		\subsubsection{CSV}
+		CSV (Comma-Separated Values) ist ein Textformat, mit welchem man Tabellen textbasiert darstellen kann \cite{rfc4180}. Hierbei werden Spalten durch \enquote{,} getrennt und Zeilen durch einen Zeilenumbruch (CRLF; LF). Die erste Zeile repräsentiert die Namen der Spalten. Eine Beschreibung einer Tabelle mit CSV sieht wie folgt aus:
+		\begin{code}{python}
+			Class,lastYear,students,class-rep
+			1AHIT,false,35,null
+			5BHIT,true,25,null
+		\end{code}
+		\captionof{listing}{CSV Beispiel}
+		\label{code:csv}~\\
+		Im Beispiel werden die beiden Klassen als zwei Datensätze in einer Tabelle aufgelistet. Auf Grund der Struktur von CSV ist es nur möglich den Array-Teil des Objektes darzustellen. Ansonsten ist der CSV-Standard recht simpel gehalten. Der letzte Punkt auf den der Standard hierbei eingeht ist, dass \enquote{"}-Zeichen um die Daten gesetzt werden können \cite{rfc4180}. Sollten, diese nicht geschlossen werden kann es jedoch zu unvorhersehbaren Verhalten kommen.
 		\subsubsection{Vergleich}
+		Ein Vergleich zwischen den Datenformaten JSON, XML und CSV ist auf dem ersten Blick nicht zielführend. Wie aus den einzelnen Beschreibungen der Technologien oben entnommen werden kann, handelt es sich beim CSV-Format um Tabellen. Bereits bei der \hyperref[sec:db]{Wahl der dokumentenorientierten Datenbank MongoDB} war der Hintergedanke relationale Datenbanken und ihrer Speicherstruktur, Tabellen, weitestmöglich zu vermeiden. 
 		
+		Wenn man sich nun auch das CSV Format und speziell das \hyperref[code:csv]{Beispiel} anschaut, merkt man, dass die Umwandlung des ursprünglichen Objektes nur indirekt möglich war und als Auflistung der Klassen endete. Das Resultat ist, dass Objekte zu CSV-Tabellen mit vielen Spalten und einer Zeile werden und Arrays zu Tabellen mit wenigen Spalten und vielen Zeilen. Eine Darstellung beider Datentypen in einer Tabelle ist nicht möglich. Dies disqualifiziert CSV für den Einsatz als Datenformat im Projekt.
+		
+		Vergleicht man nun JSON und XML so scheinen diese erst ähnlich. Jedoch besteht bei XML keine Möglichkeit Arrays zu definieren. Des Weiteren wird XML nicht nur als Datenformat zur Kommunikation genutzt, sondern hat noch weitere Nutzen als Markup Language. Demnach ist XML sehr überladen, speziell deswegen weil es einen eigenen speziellen XML-Parser braucht.
+		
+		Auch JSON braucht einen sogenannten Parser, jedoch handelt es sich hierbei nur um das Einlesen des JSON-Textes und dem Generieren des Objekts. Eine Validierung wie in XML bleibt aus. Zuletzt ist JSON nicht nur schneller, sondern auch effizienter was den Verbrauch an CPU-Leistung und an Arbeitsspeicher angeht \cite{Nurseitov}
+		
+		Aus diesen Gründen wird JSON als Datenformat zur Kommunikation zwischen den einzelnen Komponenten Refundables genutzt werden.
