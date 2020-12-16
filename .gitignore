@@ -234,3 +234,7 @@ __sandbox*
 # Outputted PDF for git reasons
 
 main.pdf
+
+# macOS
+
+.DS_Store
