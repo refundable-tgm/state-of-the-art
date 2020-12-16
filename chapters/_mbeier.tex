@@ -14,7 +14,6 @@
 	Um die Infrastruktur des Projektes einfach aufbauen zu können, wird \Gls{docker} genutzt. Da es sich hier um eine komplex strukturierte Infrastruktur handelt wird zusätzlich das Werkzeug \Gls{dcompose} genutzt. Mit Docker Compose kann eine Infrastruktur aufgebaut werden, die der \hyperref[fig:uebersicht]{Abbildung - Übersicht} entspricht. Für diese sind folgende Container vorgesehen, die in den nächsten Kapiteln noch ins Detail beschrieben werden.
 		\subsubsection{Datenbank}
 		Um die Daten, die durch Refundable erhoben und generiert werden, zu speichern, benötigen wir eine \gls{db}. Auf Grund der Daten, welche sich durch unterschiedliche Datenstrukturen auszeichnen, ist der Einsatz einer \gls{relDb} nicht sinnvoll. Stattdessen empfiehlt sich die Verwendung einer \gls{nosqlDb}.
-		
 		Standardmäßig wird zwischen 4 verschiedenen Typen von NoSQL Datenbanken unterschieden, welche jeweils nur in ihrem eigenen Use Cases sinnvoll anwendbar sind \cite{nosqltypes}:
 		\begin{itemize}
 			
@@ -27,7 +26,6 @@
 		Bei spaltenorientierten Datenbanken werden Daten vorrangig über ihre Spalten (statt wie bei relationalen \gls{db}s in Zeilen) analysiert. Dies ermöglicht die einfache Umsetzung statistischer Methoden auf Basis der Spalten. Da jedoch wieder eine Tabelle als Grundstruktur vorliegt, ist dieser Typ von Datenbank nicht sinnvoll anwendbar für Refundable.~\\
 		Bei graphenorientierten Daten wird vorrangig auf die Beziehung zwischen einzelnen Elementen geschaut. Daten werden hierbei in Knoten gespeichert, welche zu anderen Verbunden werden können. Die primären Elemente sind hierbei die Beziehungen, anstatt der Daten selbst. Da die Daten von Refundable nicht über starke Beziehungen charakterisiert sind, ist auch dieser \gls{db}-Typ nicht sinnvoll zu benutzen.~\\		
 		Zuletzt bei dokumentenorientierten Datenbanken unterliegt jeder Datensatz in einem eigenen Dokument, welches in \Gls{json}, \Gls{yaml}, \Gls{xml} oder ähnlichen Datenformaten gespeichert wird. Dadurch ist auch eine jeweils von einander unabhängige Datenstruktur möglich. Auf Grund der Flexibilität bei Datenstrukturen ist eine dokumentenorientierte Datenbank eindeutig sinnvoll zu verwenden.~\\
-		
 		Als \gls{dbms} kommt bei dieser Auswahl einige Software in Frage. Die am meisten verbreitete Software hier ist MongoDB und CouchDB \cite{mongo}. Wo MongoDB auf strenge \gls{konsistenz} setzt, setzt CouchDB auf hohe \gls{verfugbarkeit}. Da in unserem Projekt Konsistenz wichtiger ist als Verfügbarkeit wird MongoDB in einem Container als \gls{dbms} verwendet.
 		
 		\subsubsection{Backend-Container}
@@ -42,15 +40,8 @@
 	\subsection{Deployment}
 	
 	Das Deployment soll automatisch geschehen. Um dies einfach zu ermöglichen, werden die oben zuvor beschriebenen Docker-Container, GitHub und ein Skript, welches die Schritte ausführt, genutzt. Das Skript ist hier der Hauptbaustein, welcher den Vorgang startet und steuert. Zusätzlich zum Installationsvorgang, soll das Skript auch die weitere Steuerung der Software, also starten, stoppen, updaten, cleanen und deinstallieren.~\\
-	Das Skript liegt in einem eigenem Install-\Gls{repo}, in welchem sonst keine weiteren Dateien liegen. Dadurch kann es einfach gecloned werden und direkt installiert werden; der Rest wird automatisch erledigt.~\\
-	Der Installationsvorgang setzt sich aus folgenden Schritten zusammen:
-	\begin{enumerate}
-		\item Das Skript macht sich selbst verfügbar durch Setzung von environment variables bzw. dem Kopieren in einen Folder, der in der Path-Variable liegt.
-		\item Das Docker-, das Backend-, und das Frontend-Repository werden in Unterordner gecloned.
-		\item Docker wird - falls benötigt - automatisch installiert und konfiguriert.
-		\item Die individuellen Docker-Images werden über Docker Compose gebuilded.
-	\end{enumerate}
-	Die Start- und Stoppvorgänge müssen dann nur mit Docker Compose interagieren. Beim Updatevorgang werden die Repositories abgeglichen. Falls eine neue Version verfügbar ist, wird diese heruntergeladen. Die Container werden dann dementsprechend neugestartet. Der Cleanvorgang säubert das System von allen nicht mehr benötigten Docker Containern, Images und Networks. Zuletzt macht der Deinstallationsvorgang einfach den Installationsvorgang rückgängig.
+	Das Skript liegt in einem eigenem Install-\Gls{repo}, in welchem sonst keine weiteren Dateien liegen. Dadurch kann es einfach gecloned und direkt installiert werden; die restlichen Installations-Schritte werden automatisch erledigt.~\\
+	Da das Deployment auf einer Linux-Maschine ermöglicht werden soll, wird \Gls{bash} als Standard-Skriptsprache benutzt. Zur Verteilung des Scripts wird wie erwähnt \Gls{git} mit dem Online Repository-Hosting Service \Gls{github} verwendet.
 	\subsection{REST-Schnittstelle}
 	Bei einer REST-Schnittstelle handelt es sich um einen bestimmten Aufbau einer Softwareschnittstelle bei verteilten Systemen \cite{Patni2017}. Das hierbei angewendete Prinzip nennt sich \enquote{Representational State Transfer} (kurz REST). Es zeichnet sich durch folgende Eigenschaften aus:
 	\begin{itemize}
